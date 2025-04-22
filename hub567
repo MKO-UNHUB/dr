@@ -1112,6 +1112,7 @@ Tabs.WindowTab:Toggle({
     Value = vals.AutoCollectBags,
     Callback = function(state)
         vals.AutoCollectBags = state
+		SaveSetting()
     end,
 })
 
@@ -1121,6 +1122,7 @@ Tabs.WindowTab:Toggle({
     Value = vals.AutoPickArmor,
     Callback = function(state)
         vals.AutoPickArmor = state
+		SaveSetting()
     end,
 })
 
@@ -1130,6 +1132,7 @@ Tabs.WindowTab:Toggle({
     Value = vals.AutoPickBonds,
     Callback = function(state)
         vals.AutoPickBonds = state
+		SaveSetting()
     end,
 })
 
@@ -1140,8 +1143,53 @@ Tabs.WindowTab:Toggle({
     Value = vals.AutoPickOther,
     Callback = function(state)
         vals.AutoPickOther = state
+		SaveSetting()
     end,
 })
+
+Tabs.WindowTab:Section({ Title = "Healing" })
+Tabs.WindowTab:Slider({
+Title = "Auto use Bandage HP:",
+Step = 0.5,
+Value = {
+	Min = 0,
+	Max = 99.5,
+	Default = vals.BandageUse,
+},
+Callback = function(value)
+	vals.BandageUse = value
+	SaveSetting()
+end
+})
+
+Tabs.WindowTab:Slider({
+    Title = "Auto use Snake Oil HP:",
+    Step = 0.5,
+    Value = {
+        Min = 0,
+        Max = 100,
+        Default = vals.OilUse,
+    },
+    Callback = function(value)
+        vals.OilUse = value
+		SaveSetting()
+    end
+})
+ 
+Tabs.WindowTab:Slider({
+    Title = "Auto use Snake Oil Cooldown:",
+    Step = 0.1,
+    Value = {
+        Min = 0,
+        Max = 10,
+        Default = vals.OilUseCooldown,
+    },
+    Callback = function(value)
+        vals.OilUseCooldown = value
+		SaveSetting()
+    end
+})
+ 
 
 local Visual = Window:Tab({Title = "vision", Icon = "scan-eye"})
  
@@ -1156,6 +1204,7 @@ Visual:Toggle({
     Value = vals.FB,
     Callback = function(state)
         vals.FB = state
+		SaveSetting()
     end,
 })
   
@@ -1171,6 +1220,7 @@ local activated = false
 for i,v in vals.ESP do
 	Visual:Toggle({Title = i:gsub("ESP", " ESP"), Icon = "check", Value = v, Callback = function(state)
 		espLib.ESPValues[i] = state
+		SaveSetting()
 	end})
 end
 
@@ -1183,13 +1233,12 @@ Weapon:Section({
 })
 
 Weapon:Toggle({
-    Title = "Gun Aura",
-    Desc = "เปิดไว้แล้วถือปืนเดียวมันก็ยิง",
+    Title = "Kill Aura",
     Icon = "check", -- Icon
     Value = vals.GunAura,
     Callback = function(state)
         vals.GunAura = state
-        SaveSetting()
+		SaveSetting()
     end,
 })
 
@@ -1216,7 +1265,7 @@ Weapon:Toggle({
     Value = vals.Aimbot,
     Callback = function(state)
         vals.Aimbot = state
-        SaveSetting()
+		SaveSetting()
     end,
 })
 
