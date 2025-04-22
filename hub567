@@ -1042,7 +1042,7 @@ local Confirmed = false
 WindUI:Popup({
     Title = "ยินดีต้อนรับ!",
     Icon = "info",
-    Content = "นี้คือสคิป Dig to Earth's CORE! " .. gradient("MKO", Color3.fromHex("#00FF87"), Color3.fromHex("#60EFFF")) .. " UNHUB",
+    Content = "นี้คือสคิป Dead Rails " .. gradient("MKO", Color3.fromHex("#00FF87"), Color3.fromHex("#60EFFF")) .. " UNHUB",
     Buttons = {
         {
             Title = "Cancel",
